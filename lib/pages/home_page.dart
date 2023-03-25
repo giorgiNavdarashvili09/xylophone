@@ -1,5 +1,6 @@
-import 'package:audioplayers/audioplayers.dart';
+
 import 'package:flutter/material.dart';
+import 'package:xylophone/components/note.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,13 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final audioplayer = AudioPlayer();
-
-  Future setAudio({required String path}) async {
-    await audioplayer.setSource(AssetSource(path));
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,16 +18,14 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            GestureDetector(
-              onTap: () async {
-                await setAudio(path: "sounds/assets_note1.wav");
-                await audioplayer.play(audioplayer.source!);
-              },
-              child: Container(
-                height: 100,
-                color: Colors.red,
-              ),
-            ),
+            Note(filePath: "sounds/assets_note1.wav", color: Colors.red,),
+            Note(filePath: "sounds/assets_note2.wav", color: Colors.orange,),
+            Note(filePath: "sounds/assets_note3.wav", color: Colors.pink,),
+            Note(filePath: "sounds/assets_note4.wav", color: Colors.teal,),
+            Note(filePath: "sounds/assets_note5.wav", color: Colors.amber,),
+            Note(filePath: "sounds/assets_note6.wav", color: Colors.green,),
+            Note(filePath: "sounds/assets_note7.wav", color: Colors.blue,),
+
           ],
         ),
       ),
